@@ -1,0 +1,50 @@
+Fortran Routines for Locally-Weighted Regression       31 Aug 1990
+
+William S. Cleveland
+Eric Grosse
+
+Locally-weighted regression, or loess, is a procedure for estimating a
+regression surface by a multivariate smoothing procedure: fitting a
+linear or quadratic function of the independent variables in a moving
+fashion that is analogous to how a moving average is computed for a
+time series. Compared to classical approaches  - fitting global
+parametric functions - loess substantially increases the domain of
+surfaces that can be estimated without distortion. Also, a pleasant
+fact about loess is that analogues of the statistical procedures used
+in parametric function fitting - for example, ANOVA and t intervals -
+involve statistics whose distributions are well approximated by
+familiar distributions.
+
+The file sample.f is an example main program which reads one line
+	n p alpha totaldeg fcell
+and then n lines of p+1 numbers (x,y).  The paramater alpha controls
+the amount of smoothing;  a typical starting value might be .5;
+totaldeg is the degree polynomials to use, either 1 or 2;  fcell is
+a stopping criterion, typically set to alpha/5 or alpha/10.
+For more detail on calling sequences of the Fortran routines, see
+the file "internal".
+
+Both single precision and double precision versions are available;
+double is preferred when you use quadratic fitting on 32-bit machines
+like IEEE standard, IBM, and VAX.
+
+For the version distributed by electronic mail from netlib, subroutines
+from linpack have been omitted.  If those are not already on your system,
+   mail netlib@netlib.bell-labs.com
+   send r1mach snrm2 ssvdc sqrdc sdot sqrsl isamax from linpack core
+if you are using the single precision version;  for double precision,
+   send d1mach dnrm2 dsvdc dqrdc ddot dqrsl idamax from linpack core.
+When installing, don't forget to uncomment the appropriate DATA statements
+in r1mach or d1mach, as described by the comments in those functions.
+
+Bug reports are appreciated.  Send electronic mail to
+	ehg@netlib.bell-labs.com
+including the words "this is not spam" in the Subject line
+or send paper mail to
+	Eric Grosse
+	Bell Labs 2T-502
+	Murray Hill NJ 07974
+Remember that this is experimental software distributed free of charge
+and comes with no warranty!  Exercise professional caution.
+
+Happy Smoothing!
